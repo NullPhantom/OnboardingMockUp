@@ -1,0 +1,54 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary {
+  margin-top: 20px;
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  padding: 48px 0 0;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa;
+  width: 200px;
+  transition: all 0.3s;
+}
+
+#sidebar.active {
+  width: 60px;
+}
+
+#sidebar .toggle-btn {
+  position: absolute;
+  top: 10px;
+  right: -28px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+#sidebar.active .toggle-btn {
+  transform: rotate(180deg);
+}
+
+#content {
+  margin-left: 200px;
+  transition: all 0.3s;
+}
+
+#content.active {
+  margin-left: 60px;
+}
