@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BTSSC Mgmt Suite</title>
+    <!-- <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    /> -->
+
+    <!-- Custom fonts for this template-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+
+
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <img src="img/AutoZoneLogo.png" class="img-fluid p-3" style="width: 300px; height: auto;" alt="AutoZone Logo"></img>
+      <a class="navbar-brand" href="#">BTSSC Mgmt Suite</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="home-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Onboarding</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Culture Evaluation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">360 Evaluation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="stages-link">Smart Objectives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="stages-link"
+              >Financial Calculator</a
+            >
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="userDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              👤
+            </a>
+            <div
+              class="dropdown-menu dropdown-menu-right"
+              aria-labelledby="userDropdown"
+            >
+              <a class="dropdown-item" href="#">Logout</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div>
+      <ul class="list-unstyled list-inline">
+        <li class="list-inline-item nav-item">
+          <a class="nav-link" href="#" id="onboarding-link">Onboarding</a>
+        </li>
+        <li class="list-inline-item nav-item">
+          <a class="nav-link" href="#" id="positions-link">Positions</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="container mt-2" id="main-content">
+      <!-- Pie Chart -->
+      <!-- Collapsable Card Example -->
+      <div class="card shadow mb-4" id="onboarding-chart">
+        <!-- Card Header - Accordion -->
+        <a
+          href="#collapseCardExample"
+          class="d-block card-header py-3"
+          data-toggle="collapse"
+          role="button"
+          aria-expanded="true"
+          aria-controls="collapseCardExample"
+        >
+          <h6 class="m-0 font-weight-bold text-primary">
+            Collapsable Card Example
+          </h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse show" id="collapseCardExample">
+          <div class="card-body">
+            <div class="chart-pie pt-4 pb-2">
+              <canvas id="myPieChart"></canvas>
+            </div>
+            <div class="mt-4 text-center small">
+              <span class="mr-2">
+                <i class="fas fa-circle text-primary"></i> Direct
+              </span>
+              <span class="mr-2">
+                <i class="fas fa-circle text-success"></i> Social
+              </span>
+              <span class="mr-2">
+                <i class="fas fa-circle text-info"></i> Referral
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Onboarding Main Screen -->
+      <div id="onboarding-screen" class="col-md-10">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              aria-current="page"
+              href="#"
+              id="preboard-section-link"
+              >Preboard</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#" id="onboard-section-link"
+              >Onboard</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="adoption-section-link">Adoption</a>
+          </li>
+          <li>
+            <button class="btn btn btn-primary" id="add-onboardeee-button">
+              +
+            </button>
+          </li>
+        </ul>
+        <div id="preboard-section" class="row d-none">
+          <div>
+            <ul class="nav navbar navbar-expand-lg">
+              <li class="nav-item">
+                <button type="button" class="btn btn-light">
+                  Hardware Request
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-light">
+                  Other Hardware Request
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-light">
+                  Distribution List
+                </button>
+              </li>
+            </ul>
+            <table class="table table-striped" id="preboard-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Stage</th>
+                  <th>IgnitionID</th>
+                  <th>Position</th>
+                  <th>Area</th>
+                  <th>Email</th>
+                  <th>Onboard End Date</th>
+                  <th>Cost Center</th>
+                  <th>Starting Date</th>
+                  <th>Manager</th>
+                  <th>Supervisor</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>John Doe</td>
+                  <td>New Hire</td>
+                  <td>PreBoard</td>
+                  <td>12345</td>
+                  <td>Developer</td>
+                  <td>IT</td>
+                  <td>john.doe@example.com</td>
+                  <td>2022-12-01</td>
+                  <td>101</td>
+                  <td>2022-11-01</td>
+                  <td>Jane Smith</td>
+                  <td>Michael Brown</td>
+                  <td>---</td>
+                </tr>
+                <tr>
+                  <td>John Doe</td>
+                  <td>Promoted</td>
+                  <td>PreBoard</td>
+                  <td>12345</td>
+                  <td>Developer</td>
+                  <td>IT</td>
+                  <td>john.doe@example.com</td>
+                  <td>2022-12-01</td>
+                  <td>101</td>
+                  <td>2022-11-01</td>
+                  <td>Jane Smith</td>
+                  <td>Michael Brown</td>
+                  <td>---</td>
+                </tr>
+                <!-- Add more dummy records as needed -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div id="onboard-section" class="row">
+          <ul class="nav navbar navbar-expand-lg">
+            <li class="nav-item">
+              <button type="button" class="btn btn-light">
+                Windows Shared Folder
+              </button>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="btn btn-light">SMAX</button>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="btn btn-light">JIRA</button>
+            </li>
+          </ul>
+          <div>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Stage</th>
+                  <th>IgnitionID</th>
+                  <th>Position</th>
+                  <th>Area</th>
+                  <th>Email</th>
+                  <th>Onboard End Date</th>
+                  <th>Cost Center</th>
+                  <th>Starting Date</th>
+                  <th>Manager</th>
+                  <th>Supervisor</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Jane Smith</td>
+                  <td>New Hire</td>
+                  <td>Onboard</td>
+                  <td>67890</td>
+                  <td>Analyst</td>
+                  <td>Finance</td>
+                  <td>jane.smith@example.com</td>
+                  <td>2022-12-15</td>
+                  <td>102</td>
+                  <td>2022-11-15</td>
+                  <td>John Doe</td>
+                  <td>Michael Brown</td>
+                  <td>---</td>
+                </tr>
+                <tr>
+                  <td>Jane Smith</td>
+                  <td>Promoted</td>
+                  <td>Onboard</td>
+                  <td>67890</td>
+                  <td>Analyst</td>
+                  <td>Finance</td>
+                  <td>jane.smith@example.com</td>
+                  <td>2022-12-15</td>
+                  <td>102</td>
+                  <td>2022-11-15</td>
+                  <td>John Doe</td>
+                  <td>Michael Brown</td>
+                  <td>---</td>
+                </tr>
+                <!-- Add more dummy records as needed -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div id="adoption-section" class="row d-none">
+          <ul class="nav navbar navbar-expand-lg">
+            <li class="nav-item">
+              <button type="button" class="btn btn-light">
+                1.1 Leader Meetings
+              </button>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="btn btn-light">.NET Training</button>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="btn btn-light">
+                Peer Programming
+              </button>
+            </li>
+          </ul>
+          <div>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Stage</th>
+                  <th>IgnitionID</th>
+                  <th>Position</th>
+                  <th>Area</th>
+                  <th>Email</th>
+                  <th>Onboard End Date</th>
+                  <th>Cost Center</th>
+                  <th>Starting Date</th>
+                  <th>Manager</th>
+                  <th>Supervisor</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Michael Brown</td>
+                  <td>Promoted</td>
+                  <td>Adoption</td>
+                  <td>11223</td>
+                  <td>Manager</td>
+                  <td>Sales</td>
+                  <td>michael.brown@\ex.com</td>
+                  <td>2022-12-20</td>
+                  <td>103</td>
+                  <td>2022-11-20</td>
+                  <td>John Doe</td>
+                  <td>Jane Smith</td>
+                  <td>---</td>
+                </tr>
+                <!-- Add more dummy records as needed -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Positions View Screen -->
+      <div id="positions-screen" class="d-none">
+        <h2>Positions</h2>
+        <table class="table table-striped" id="positions-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Stages</th>
+              <th>Onboarding Days Threshold</th>
+              <th class="text-center">-</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Developer</td>
+              <td>Responsible for developing software.</td>
+              <td>
+                <a href="#">PreBoard,</a>
+                <a href="#">Onboard,</a>
+                <a href="#">Adoption</a>
+              </td>
+              <td>30</td>
+              <td>
+                <a href="#" class="btn"><i class="bi bi-pencil"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <td>Analyst</td>
+              <td>Responsible for analyzing financial data.</td>
+              <td>
+                <a href="#">PreBoard,</a>
+                <a href="#">Onboard,</a>
+                <a href="#">Adoption</a>
+              </td>
+              <td>45</td>
+              <td>
+                <a href="#" class="btn"><i class="bi bi-pencil"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <td>Manager</td>
+              <td>Responsible for managing the team.</td>
+              <td>
+                <a href="#">PreBoard,</a>
+                <a href="#">Onboard,</a>
+                <a href="#">Adoption</a>
+              </td>
+              <td>60</td>
+              <td>
+                <a href="#" class="btn"><i class="bi bi-pencil"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-primary" id="add-position-button">+</button>
+      </div>
+
+      <!-- New Position Form -->
+      <div id="new-position-screen" class="d-none">
+        <h2>New Position</h2>
+        <form>
+          <div class="form-group">
+            <label for="position-name">Name</label>
+            <input type="text" class="form-control" id="position-name" />
+          </div>
+          <div class="form-group">
+            <label for="position-description">Description</label>
+            <input type="text" class="form-control" id="position-description" />
+          </div>
+          <div class="form-group">
+            <label for="onboarding-days">Onboarding Days Threshold</label>
+            <input type="number" class="form-control" id="onboarding-days" />
+          </div>
+          <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+      </div>
+
+      <!-- Stages Form -->
+      <div id="new-onboardee-screen" class="d-none">
+        <h2>New Onboardee</h2>
+        <form>
+          <div class="form-group">
+            <label for="stage-position">Name</label>
+            <input type="text" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="stage-order">Type</label>
+            <input type="number" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="stage-name">Ignition ID</label>
+            <input type="text" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="stage-description">Poistion</label>
+            <input type="text" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="stage-onboarding-days">Starting Date</label>
+            <input type="number" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="stage-onboarding-days">Stage</label>
+            <input type="number" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="stage-onboarding-days">Supervisor</label>
+            <input type="number" class="form-control" />
+          </div>
+          <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+      </div>
+      <!-- Stages Form -->
+      <div id="stages-screen" class="d-none">
+        <h2>New Stage</h2>
+        <form>
+          <div class="form-group">
+            <label for="stage-position">Position</label>
+            <input type="text" class="form-control" id="stage-position" />
+          </div>
+          <div class="form-group">
+            <label for="stage-order">Order</label>
+            <input type="number" class="form-control" id="stage-order" />
+          </div>
+          <div class="form-group">
+            <label for="stage-name">Name</label>
+            <input type="text" class="form-control" id="stage-name" />
+          </div>
+          <div class="form-group">
+            <label for="stage-description">Description</label>
+            <input type="text" class="form-control" id="stage-description" />
+          </div>
+          <div class="form-group">
+            <label for="stage-onboarding-days">Onboarding Days Threshold</label>
+            <input
+              type="number"
+              class="form-control"
+              id="stage-onboarding-days"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+      </div>
+      <!-- Progress-Screen -->
+      <div id="progress-screen" class="d-none">
+        <h2>Progress</h2>
+        <form>
+          <div class="form-group">
+            <label for="progres-employ-name">Employee's name</label>
+          </div>
+
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div
+                      class="text-xs font-weight-bold text-info text-uppercase mb-1"
+                    >
+                      Tasks
+                    </div>
+                    <div class="row no-gutters align-items-center">
+                      <div class="col-auto">
+                        <div
+                          class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                        >
+                          50%
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="progress progress-sm mr-2">
+                          <div
+                            class="progress-bar bg-info"
+                            role="progressbar"
+                            style="width: 50%"
+                            aria-valuenow="50"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Stage</h6>
+            </div>
+            <div class="card-body">
+              <h4 class="small font-weight-bold">
+                Server Migration <span class="float-right">20%</span>
+              </h4>
+              <div class="progress mb-4">
+                <div
+                  class="progress-bar bg-danger"
+                  role="progressbar"
+                  style="width: 20%"
+                  aria-valuenow="20"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+              <h4 class="small font-weight-bold">
+                Sales Tracking <span class="float-right">40%</span>
+              </h4>
+              <div class="progress mb-4">
+                <div
+                  class="progress-bar bg-warning"
+                  role="progressbar"
+                  style="width: 40%"
+                  aria-valuenow="40"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+              <h4 class="small font-weight-bold">
+                Customer Database <span class="float-right">60%</span>
+              </h4>
+              <div class="progress mb-4">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style="width: 60%"
+                  aria-valuenow="60"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+              <h4 class="small font-weight-bold">
+                Payout Details <span class="float-right">80%</span>
+              </h4>
+              <div class="progress mb-4">
+                <div
+                  class="progress-bar bg-info"
+                  role="progressbar"
+                  style="width: 80%"
+                  aria-valuenow="80"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+              <h4 class="small font-weight-bold">
+                Account Setup <span class="float-right">Complete!</span>
+              </h4>
+              <div class="progress">
+                <div
+                  class="progress-bar bg-success"
+                  role="progressbar"
+                  style="width: 100%"
+                  aria-valuenow="100"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+      </div>
+
+      <!-- Edit-Position-Screen -->
+      <div id="edit-position-screen" class="d-none">
+        <h2>Edit Position</h2>
+        <form>
+          <div class="form-group">
+            <label for="progres-employ-name">Employee's name</label>
+          </div>
+
+        
+
+          <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+      </div>
+
+    <!-- main-content end -->
+    </div>
+
+     
+
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+
+    <!-- Navigation -->
+    <script src="js/navigation.js"></script>
+
+  </body>
+</html>
