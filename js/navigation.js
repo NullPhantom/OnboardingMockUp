@@ -129,7 +129,7 @@ $(document).ready(function () {
         {
           name: "Cube",
           description:
-            "TasEstablish the position in which the employee is to be installedk 3 Description",
+            "Establish the position in which the employee is to be installed",
           hyperlink: "http://example.com/task1",
         },
         {
