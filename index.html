@@ -377,9 +377,9 @@
               <td>Developer</td>
               <td>Responsible for developing software.</td>
               <td>
-                <a href="#">PreBoard,</a>
-                <a href="#">Onboard,</a>
-                <a href="#">Adoption</a>
+                <a href="#" class="stages-link">PreBoard,</a>
+                <a href="#" class="stages-link">Onboard,</a>
+                <a href="#" class="stages-link">Adoption</a>
               </td>
               <td>30</td>
               <td>
@@ -390,9 +390,9 @@
               <td>Analyst</td>
               <td>Responsible for analyzing financial data.</td>
               <td>
-                <a href="#">PreBoard,</a>
-                <a href="#">Onboard,</a>
-                <a href="#">Adoption</a>
+                <a href="#" class="stages-link">PreBoard,</a>
+                <a href="#" class="stages-link">Onboard,</a>
+                <a href="#" class="stages-link">Adoption</a>
               </td>
               <td>45</td>
               <td>
@@ -403,9 +403,9 @@
               <td>Manager</td>
               <td>Responsible for managing the team.</td>
               <td>
-                <a href="#">PreBoard,</a>
-                <a href="#">Onboard,</a>
-                <a href="#">Adoption</a>
+                <a href="#" class="stages-link">PreBoard,</a>
+                <a href="#" class="stages-link">Onboard,</a>
+                <a href="#" class="stages-link">Adoption</a>
               </td>
               <td>60</td>
               <td>
@@ -432,6 +432,26 @@
           <div class="form-group">
             <label for="onboarding-days">Onboarding Days Threshold</label>
             <input type="number" class="form-control" id="onboarding-days" />
+          </div>
+          <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+      </div>
+
+      <!-- New Task Form -->
+      <div id="new-task-screen" class="d-none">
+        <h2>New Task</h2>
+        <form>
+          <div class="form-group">
+            <label for="task-name">Name</label>
+            <input type="text" class="form-control" id="task-name" />
+          </div>
+          <div class="form-group">
+            <label for="task-description">Description</label>
+            <input type="text" class="form-control" id="task-description" />
+          </div>
+          <div class="form-group">
+            <label for="task-hyperlink">Hyperlink</label>
+            <input type="number" class="form-control" id="task-hyperlink" />
           </div>
           <button type="submit" class="btn btn-primary">Create</button>
         </form>
@@ -474,33 +494,31 @@
       </div>
       <!-- Stages Form -->
       <div id="stages-screen" class="d-none">
-        <h2>New Stage</h2>
+        <h2 id="title-stage">Stage</h2>
+        <br>
+        <h2>Tasks</h2>
         <form>
-          <div class="form-group">
-            <label for="stage-position">Position</label>
-            <input type="text" class="form-control" id="stage-position" />
-          </div>
-          <div class="form-group">
-            <label for="stage-order">Order</label>
-            <input type="number" class="form-control" id="stage-order" />
-          </div>
-          <div class="form-group">
-            <label for="stage-name">Name</label>
-            <input type="text" class="form-control" id="stage-name" />
-          </div>
-          <div class="form-group">
-            <label for="stage-description">Description</label>
-            <input type="text" class="form-control" id="stage-description" />
-          </div>
-          <div class="form-group">
-            <label for="stage-onboarding-days">Onboarding Days Threshold</label>
-            <input
-              type="number"
-              class="form-control"
-              id="stage-onboarding-days"
-            />
-          </div>
-          <button type="submit" class="btn btn-primary">Create</button>
+          <table class="table table-striped" id="tasks-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Hyperlink</th>
+                <th class="text-center">-</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td class="text-center">
+                  <a href="#" class="btn"><i class="bi bi-pencil"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-primary" id="add-tasks-button">+</button>  
         </form>
       </div>
       <!-- Progress-Screen -->
@@ -634,12 +652,38 @@
         <h2>Edit Position</h2>
         <form>
           <div class="form-group">
-            <label for="progres-employ-name">Employee's name</label>
+            <label for="position-name">Name</label>
+            <input type="text" class="form-control" id="edit-name" placeholder="Name"/>
           </div>
+          <div class="form-group">
+            <label for="position-description">Description</label>
+            <input type="text" class="form-control" id="edit-description" placeholder="Description"/>
+          </div>
+          <div class="form-group">
+            <label for="onboarding-days">Onboarding Days Threshold</label>
+            <input type="number" class="form-control" id="edit-threshold" placeholder="Days Threshold"/>
+          </div>
+          <button type="submit" class="btn btn-primary">Edit</button>
+        </form>
+      </div>
 
-        
-
-          <button type="submit" class="btn btn-primary">Create</button>
+      <!-- Edit-Tasks-Screen -->
+      <div id="edit-tasks-screen" class="d-none">
+        <h2>Edit Task</h2>
+        <form>
+          <div class="form-group">
+            <label for="task-name">Name</label>
+            <input type="text" class="form-control" id="edit-name-task" placeholder="Name"/>
+          </div>
+          <div class="form-group">
+            <label for="task-description">Description</label>
+            <input type="text" class="form-control" id="edit-description-task" placeholder="Description"/>
+          </div>
+          <div class="form-group">
+            <label for="task-hyperlink">Hyperlink</label>
+            <input type="number" class="form-control" id="edit-hyperlink-task" placeholder="Hyperlink"/>
+          </div>
+          <button type="submit" class="btn btn-primary">Edit</button>
         </form>
       </div>
 
