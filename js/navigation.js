@@ -108,18 +108,18 @@ $(document).ready(function () {
     var name = row.find("td:eq(0)").text(); // Nombre
     var description = row.find("td:eq(1)").text(); // Descripción
     // var stages = row.find("td:eq(2)").text().trim().split(","); // Etapas (como una lista)
-    var threshold = row.find("td:eq(3)").text(); // Umbral de días de incorporación
+    var salaryGrade = row.find("td:eq(3)").text(); // Umbral de días de incorporación
 
     // Mostrar la información en la consola (solo para propósitos de demostración)
     console.log("Nombre:", name);
     console.log("Descripción:", description);
     // console.log("Etapas:", stages);
-    console.log("Umbral de días de incorporación:", threshold);
+    console.log("Grado del salario:", salaryGrade);
 
     // Insertar los valores en los campos de texto como placeholders
     $("#edit-name").attr("placeholder", name);
     $("#edit-description").attr("placeholder", description);
-    $("#edit-threshold").attr("placeholder", threshold);
+    $("#edit-salary-grade").attr("placeholder", salaryGrade);
   });
 
   $("#tasks-table tbody").on("click", "tr td a.btn", function () {
