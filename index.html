@@ -24,7 +24,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <img src="img/CompanyLogo.png" class="img-fluid p-3" style="width: 300px; height: auto;" alt="Logo"></img>
+        <img src="img/CompanyLogo.png" class="img-fluid mx-3" style="width: 275px; height: auto;" alt="Logo"></img>
       <a class="navbar-brand" href="#">BTSSC Mgmt Suite</a>
       <button
         class="navbar-toggler"
@@ -52,10 +52,10 @@
             <a class="nav-link" href="#">360 Evaluation</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" id="stages-link">Smart Objectives</a>
+            <a class="nav-link" href="#">Smart Objectives</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" id="stages-link"
+            <a class="nav-link" href="#"
               >Financial Calculator</a
             >
           </li>
@@ -92,6 +92,9 @@
         <li class="list-inline-item nav-item">
           <a class="nav-link" href="#" id="positions-link">Positions</a>
         </li>
+        <li class="list-inline-item nav-item">
+          <a class="nav-link" href="#" id="tools-link">Tools</a>
+        </li>
       </ul>
     </div>
 
@@ -109,16 +112,16 @@
           aria-controls="collapseCardExample"
         >
           <h6 class="m-0 font-weight-bold text-primary">
-            Collapsable Card Example
+            KPI's
           </h6>
         </a>
         <!-- Card Content - Collapse -->
-        <div class="collapse show" id="collapseCardExample">
+        <div class="collapse hide" id="collapseCardExample">
           <div class="card-body">
             <div class="chart-pie pt-4 pb-2">
               <canvas id="myPieChart"></canvas>
             </div>
-            <div class="mt-4 text-center small">
+            <!-- <div class="mt-4 text-center small">
               <span class="mr-2">
                 <i class="fas fa-circle text-primary"></i> Direct
               </span>
@@ -128,7 +131,7 @@
               <span class="mr-2">
                 <i class="fas fa-circle text-info"></i> Referral
               </span>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -178,58 +181,61 @@
                 </button>
               </li>
             </ul>
-            <table class="table table-striped" id="preboard-table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>Stage</th>
-                  <th>IgnitionID</th>
-                  <th>Position</th>
-                  <th>Area</th>
-                  <th>Email</th>
-                  <th>Onboard End Date</th>
-                  <th>Cost Center</th>
-                  <th>Starting Date</th>
-                  <th>Manager</th>
-                  <th>Supervisor</th>
-                  <th>Notes</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>John Doe</td>
-                  <td>New Hire</td>
-                  <td>PreBoard</td>
-                  <td>12345</td>
-                  <td>Developer</td>
-                  <td>IT</td>
-                  <td>john.doe@example.com</td>
-                  <td>2022-12-01</td>
-                  <td>101</td>
-                  <td>2022-11-01</td>
-                  <td>Jane Smith</td>
-                  <td>Michael Brown</td>
-                  <td>---</td>
-                </tr>
-                <tr>
-                  <td>John Doe</td>
-                  <td>Promoted</td>
-                  <td>PreBoard</td>
-                  <td>12345</td>
-                  <td>Developer</td>
-                  <td>IT</td>
-                  <td>john.doe@example.com</td>
-                  <td>2022-12-01</td>
-                  <td>101</td>
-                  <td>2022-11-01</td>
-                  <td>Jane Smith</td>
-                  <td>Michael Brown</td>
-                  <td>---</td>
-                </tr>
-                <!-- Add more dummy records as needed -->
-              </tbody>
-            </table>
+              <table class="table table-striped" id="preboard-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Stage</th>
+                    <th>IgnitionID</th>
+                    <th>Position</th>
+                    <th>Area</th>
+                    <th>Email</th>
+                    <th>Onboard End Date</th>
+                    <th>Cost Center</th>
+                    <th>Starting Date</th>
+                    <th>Manager</th>
+                    <th>Supervisor</th>
+                    <th>Assignee</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>John Doe</td>
+                    <td>New Hire</td>
+                    <td>PreBoard</td>
+                    <td>12345</td>
+                    <td>Developer</td>
+                    <td>IT</td>
+                    <td>john.doe@example.com</td>
+                    <td>2022-12-01</td>
+                    <td>101</td>
+                    <td>2022-11-01</td>
+                    <td>Jane Smith</td>
+                    <td>Michael Brown</td>
+                    <td>Michael Brown</td>
+                    <td>---</td>
+                  </tr>
+                  <tr>
+                    <td>John Doe</td>
+                    <td>Promoted</td>
+                    <td>PreBoard</td>
+                    <td>12345</td>
+                    <td>Developer</td>
+                    <td>IT</td>
+                    <td>john.doe@example.com</td>
+                    <td>2022-12-01</td>
+                    <td>101</td>
+                    <td>2022-11-01</td>
+                    <td>Jane Smith</td>
+                    <td>Michael Brown</td>
+                    <td>Michael Brown</td>
+                    <td>---</td>
+                  </tr>
+                  <!-- Add more dummy records as needed -->
+                </tbody>
+              </table> 
           </div>
         </div>
         <div id="onboard-section" class="row">
@@ -262,6 +268,7 @@
                   <th>Starting Date</th>
                   <th>Manager</th>
                   <th>Supervisor</th>
+                  <th>Assignee</th>
                   <th>Notes</th>
                 </tr>
               </thead>
@@ -279,6 +286,7 @@
                   <td>2022-11-15</td>
                   <td>John Doe</td>
                   <td>Michael Brown</td>
+                  <td>Michael Brown</td>
                   <td>---</td>
                 </tr>
                 <tr>
@@ -294,6 +302,7 @@
                   <td>2022-11-15</td>
                   <td>John Doe</td>
                   <td>Michael Brown</td>
+                  <td>Laura Lopez</td>
                   <td>---</td>
                 </tr>
                 <!-- Add more dummy records as needed -->
@@ -333,6 +342,7 @@
                   <th>Starting Date</th>
                   <th>Manager</th>
                   <th>Supervisor</th>
+                  <th>Assignee</th>
                   <th>Notes</th>
                 </tr>
               </thead>
@@ -349,6 +359,7 @@
                   <td>103</td>
                   <td>2022-11-20</td>
                   <td>John Doe</td>
+                  <td>Jane Smith</td>
                   <td>Jane Smith</td>
                   <td>---</td>
                 </tr>
@@ -415,6 +426,26 @@
           </tbody>
         </table>
         <button class="btn btn-primary" id="add-position-button">+</button>
+      </div>
+
+      <!--Tools Screen-->
+      <div id="tools-screen" class="d-none">
+        <h2>Tool</h2>
+        <form>
+          <div class="form-group">
+            <label for="tool-name">Name</label>
+            <input type="text" class="form-control" id="tool-name" />
+          </div>
+          <div class="form-group">
+            <label for="tool-description">Description</label>
+            <input type="text" class="form-control" id="tool-description" />
+          </div>
+          <div class="form-group">
+            <label for="tool-hyperlink">Hyperlink</label>
+            <input type="number" class="form-control" id="tool-hyperlink" />
+          </div>
+          <button type="submit" class="btn btn-primary">Create</button>
+        </form>
       </div>
 
       <!-- New Position Form -->
@@ -526,7 +557,7 @@
         <h2>Progress</h2>
         <form>
           <div class="form-group">
-            <label for="progres-employ-name">Employee's name</label>
+            <label for="progres-employ-name" id="employee-name">Employee's name</label>
           </div>
 
           <div class="col-xl-3 col-md-6 mb-4">

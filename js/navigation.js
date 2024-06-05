@@ -8,6 +8,10 @@ $(document).ready(function () {
     $("#main-content > div").addClass("d-none");
     $("#positions-screen").removeClass("d-none");
   });
+  $("#tools-link").on("click", function () {
+    $("#main-content > div").addClass("d-none");
+    $("#tools-screen").removeClass("d-none");
+  });
   $("#add-position-button").on("click", function () {
     $("#main-content > div").addClass("d-none");
     $("#new-position-screen").removeClass("d-none");
@@ -51,10 +55,44 @@ $(document).ready(function () {
   });
 
   $("#preboard-table tbody tr").on("click", function () {
+    //Obtener la fila correspondiente
+    var row = $(this).closest("tr");
+
+    //Obtener los elementos de la fila
+    var name = row.find("td:eq(0)").text(); //Nombre
+    var type = row.find("td:eq(1)").text(); //Type
+    var stage = row.find("td:eq(2)").text(); //Stage
+    var ignitionID = row.find("td:eq(3)").text(); //IgnitionID
+    var position = row.find("td:eq(4)").text(); //Position
+    var area = row.find("td:eq(5)").text(); //Area
+    var email = row.find("td:eq(6)").text(); //Email
+    var onboardEndDate = row.find("td:eq(7)").text(); //Onboard end date
+    var costCenter = row.find("td:eq(8)").text(); //Cost center
+    var startingDate = row.find("td:eq(9)").text(); //Starting Date
+    var manager = row.find("td:eq(10)").text(); //Manager
+    var supervisor = row.find("td:eq(11)").text(); //Notes
+    var notes = row.find("td:eq(12)").text();
+
+    console.log("Name of the employee: ", name);
+    console.log("Type: ", type);
+    console.log("Stage: ", stage);
+    console.log("Ignition ID: ", ignitionID);
+    console.log("Position: ", position);
+    console.log("Area: ", area);
+    console.log("Email: ", email);
+    console.log("Onboard end date: ", onboardEndDate);
+    console.log("Cost center: ", costCenter);
+    console.log("Starting date: ", startingDate);
+    console.log("Manager: ", manager);
+    console.log("Supervisor: ", supervisor);
+    console.log("Notes: ", notes);
+
     // Acción a realizar al hacer clic en una fila
     $("#main-content > div").addClass("d-none");
     $("#progress-screen").removeClass("d-none");
     console.log("Haz clic en la fila:", $(this).index());
+
+    $("#employee-name").text(name);
   });
 
   $("#positions-table tbody tr td a.btn").on("click", function () {
