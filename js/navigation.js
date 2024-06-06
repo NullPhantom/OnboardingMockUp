@@ -1,4 +1,7 @@
 $(document).ready(function () {
+  $("#preboard-table td").addClass("truncate-text");
+  $("#preboard-table th").addClass("truncate-text");
+
   $("#home-link, #onboarding-link").on("click", function () {
     $("#main-content > div").addClass("d-none");
     $("#onboarding-screen").removeClass("d-none");
@@ -54,7 +57,7 @@ $(document).ready(function () {
     $("#adoption-section-link").addClass("active");
   });
 
-  $("#preboard-table tbody tr").on("click", function () {
+  $("#preboard-table tbody tr td:not(.cell_dropdown)").on("click", function () {
     //Obtener la fila correspondiente
     var row = $(this).closest("tr");
 
@@ -93,6 +96,20 @@ $(document).ready(function () {
     console.log("Haz clic en la fila:", $(this).index());
 
     $("#employee-name").text(name);
+  });
+
+  $("#preboard-table td").hover(function () {
+    var $this = $(this);
+    if ($this[0].offsetWidth < $this[0].scrollWidth) {
+      $this.attr(
+        "title",
+        $this.text()
+      ); /* Agrega el texto completo como atributo 'title' */
+    } else {
+      $this.removeAttr(
+        "title"
+      ); /* Elimina el atributo 'title' si el texto cabe en la celda */
+    }
   });
 
   $("#positions-table tbody tr td a.btn").on("click", function () {

@@ -1,4 +1,4 @@
-body {
+/* body {
   background-color: #f8f9fa;
 }
 
@@ -51,4 +51,11 @@ body {
 
 #content.active {
   margin-left: 60px;
+} */
+
+#preboard-table .truncate-text {
+  max-width: 12ch !important; /* Define el ancho máximo de la celda en función del número de caracteres */
+  overflow: hidden !important; /* Oculta el contenido que excede el ancho máximo */
+  white-space: nowrap !important; /* Evita que el texto se divida en varias líneas */
+  text-overflow: ellipsis !important; /* Agrega puntos suspensivos si el texto se corta */
 }

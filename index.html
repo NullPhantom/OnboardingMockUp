@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
 
 
-    <!-- <link rel="stylesheet" href="styles.css" /> -->
+    <link href="style.css" rel="stylesheet"  />
     <link href="css/sb-admin-2.min.css" rel="stylesheet" />
   </head>
   <body>
@@ -98,48 +98,43 @@
       </ul>
     </div>
 
-    <div class="container mt-2" id="main-content">
+    <div class="container-fluid mt-2" id="main-content">
       <!-- Pie Chart -->
       <!-- Collapsable Card Example -->
-      <div class="card shadow mb-4" id="onboarding-chart">
-        <!-- Card Header - Accordion -->
-        <a
-          href="#collapseCardExample"
-          class="d-block card-header py-3"
-          data-toggle="collapse"
-          role="button"
-          aria-expanded="true"
-          aria-controls="collapseCardExample"
-        >
-          <h6 class="m-0 font-weight-bold text-primary">
-            KPI's
-          </h6>
-        </a>
-        <!-- Card Content - Collapse -->
-        <div class="collapse hide" id="collapseCardExample">
-          <div class="card-body">
-            <div class="chart-pie pt-4 pb-2">
-              <canvas id="myPieChart"></canvas>
+      <div class="row mx-3" id="onboarding-chart"> <!--  justify-content-center -->
+        <div style="width: 30%;">
+          <div class="card shadow mb-4">
+            <!-- Card Header - Accordion -->
+            <a
+              href="#collapseCardExample"
+              class="d-block card-header py-3"
+              data-toggle="collapse"
+              role="button"
+              aria-expanded="true"
+              aria-controls="collapseCardExample"
+            >
+              <h6 class="m-0 font-weight-bold text-primary">
+                KPI's
+              </h6>
+            </a>
+            <!-- Card Content - Collapse -->
+            <div class="collapse hide" id="collapseCardExample">
+              <div class="card-body">
+                <div class="chart-pie pt-4 pb-2">
+                  <canvas id="myPieChart"></canvas>
+                </div>
+              </div>
             </div>
-            <!-- <div class="mt-4 text-center small">
-              <span class="mr-2">
-                <i class="fas fa-circle text-primary"></i> Direct
-              </span>
-              <span class="mr-2">
-                <i class="fas fa-circle text-success"></i> Social
-              </span>
-              <span class="mr-2">
-                <i class="fas fa-circle text-info"></i> Referral
-              </span>
-            </div> -->
           </div>
         </div>
       </div>
+      
 
       <!-- Onboarding Main Screen -->
-      <div id="onboarding-screen" class="col-md-10">
-        <ul class="nav nav-tabs">
-          <li class="nav-item">
+      <div id="onboarding-screen" class="col-md-12">
+
+        <ul class="nav nav-tabs w-100 d-flex">
+          <li class="nav-item flex-fill text-center">
             <a
               class="nav-link"
               aria-current="page"
@@ -148,12 +143,12 @@
               >Preboard</a
             >
           </li>
-          <li class="nav-item">
+          <li class="nav-item flex-fill text-center">
             <a class="nav-link active" href="#" id="onboard-section-link"
               >Onboard</a
             >
           </li>
-          <li class="nav-item">
+          <li class="nav-item flex-fill text-center">
             <a class="nav-link" href="#" id="adoption-section-link">Adoption</a>
           </li>
           <li>
@@ -162,6 +157,7 @@
             </button>
           </li>
         </ul>
+
         <div id="preboard-section" class="row d-none">
           <div>
             <ul class="nav navbar navbar-expand-lg">
@@ -181,61 +177,76 @@
                 </button>
               </li>
             </ul>
-              <table class="table table-striped" id="preboard-table">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Stage</th>
-                    <th>IgnitionID</th>
-                    <th>Position</th>
-                    <th>Area</th>
-                    <th>Email</th>
-                    <th>Onboard End Date</th>
-                    <th>Cost Center</th>
-                    <th>Starting Date</th>
-                    <th>Manager</th>
-                    <th>Supervisor</th>
-                    <th>Assignee</th>
-                    <th>Notes</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>John Doe</td>
-                    <td>New Hire</td>
-                    <td>PreBoard</td>
-                    <td>12345</td>
-                    <td>Developer</td>
-                    <td>IT</td>
-                    <td>john.doe@example.com</td>
-                    <td>2022-12-01</td>
-                    <td>101</td>
-                    <td>2022-11-01</td>
-                    <td>Jane Smith</td>
-                    <td>Michael Brown</td>
-                    <td>Michael Brown</td>
-                    <td>---</td>
-                  </tr>
-                  <tr>
-                    <td>John Doe</td>
-                    <td>Promoted</td>
-                    <td>PreBoard</td>
-                    <td>12345</td>
-                    <td>Developer</td>
-                    <td>IT</td>
-                    <td>john.doe@example.com</td>
-                    <td>2022-12-01</td>
-                    <td>101</td>
-                    <td>2022-11-01</td>
-                    <td>Jane Smith</td>
-                    <td>Michael Brown</td>
-                    <td>Michael Brown</td>
-                    <td>---</td>
-                  </tr>
-                  <!-- Add more dummy records as needed -->
-                </tbody>
-              </table> 
+            
+          </div>
+          <div class="table-responsive">
+            <table class="table table-striped" id="preboard-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Stage</th>
+                  <th>IgnitionID</th>
+                  <th>Position</th>
+                  <th>Area</th>
+                  <th>Email</th>
+                  <th>Onboard End Date</th>
+                  <th>Cost Center</th>
+                  <th>Starting Date</th>
+                  <th>Manager</th>
+                  <th>Supervisor</th>
+                  <th>Assignee</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>John Doe</td>
+                  <td>New Hire</td>
+                  <td class="cell_dropdown">
+                    <select class="form-control">
+                      <option value="Preboard">Preboard</option>
+                      <option value="Onboard">Onboard</option>
+                      <option value="Adoption">Adoption</option>
+                    </select>
+                  </td>
+                  <td>12345</td>
+                  <td>Developer</td>
+                  <td>IT</td>
+                  <td>john.doe@example.com</td>
+                  <td>2022-12-01</td>
+                  <td>101</td>
+                  <td>2022-11-01</td>
+                  <td>Jane Smith</td>
+                  <td>Michael Brown</td>
+                  <td>Michael Brown</td>
+                  <td>---</td>
+                </tr>
+                <tr>
+                  <td>John Doe</td>
+                  <td>Promoted</td>
+                  <td class="cell_dropdown">
+                    <select class="form-control">
+                      <option value="Preboard">Preboard</option>
+                      <option value="Onboard">Onboard</option>
+                      <option value="Adoption">Adoption</option>
+                    </select>
+                  </td>
+                  <td>12345</td>
+                  <td>Developer</td>
+                  <td>IT</td>
+                  <td>john.doe@example.com</td>
+                  <td>2022-12-01</td>
+                  <td>101</td>
+                  <td>2022-11-01</td>
+                  <td>Jane Smith</td>
+                  <td>Michael Brown</td>
+                  <td>Michael Brown</td>
+                  <td>---</td>
+                </tr>
+                <!-- Add more dummy records as needed -->
+              </tbody>
+            </table>
           </div>
         </div>
         <div id="onboard-section" class="row">
@@ -253,6 +264,8 @@
             </li>
           </ul>
           <div>
+          </div>
+          <div class="table-responsive">
             <table class="table table-striped" id="preboard-table">
               <thead>
                 <tr>
@@ -276,7 +289,13 @@
                 <tr>
                   <td>Jane Smith</td>
                   <td>New Hire</td>
-                  <td>Onboard</td>
+                  <td class="cell_dropdown">
+                    <select class="form-control">
+                    <option value="Preboard">Preboard</option>
+                    <option value="Onboard">Onboard</option>
+                    <option value="Adoption">Adoption</option>
+                  </select>
+                </td>
                   <td>67890</td>
                   <td>Analyst</td>
                   <td>Finance</td>
@@ -292,7 +311,13 @@
                 <tr>
                   <td>Jane Smith</td>
                   <td>Promoted</td>
-                  <td>Onboard</td>
+                  <td class="cell_dropdown">
+                    <select class="form-control">
+                      <option value="Preboard">Preboard</option>
+                      <option value="Onboard">Onboard</option>
+                      <option value="Adoption">Adoption</option>
+                    </select>
+                  </td>
                   <td>67890</td>
                   <td>Analyst</td>
                   <td>Finance</td>
@@ -327,6 +352,8 @@
             </li>
           </ul>
           <div>
+          </div>
+          <div class="table-responsive">
             <table class="table table-striped" id="preboard-table">
               <thead>
                 <tr>
@@ -350,7 +377,13 @@
                 <tr>
                   <td>Michael Brown</td>
                   <td>Promoted</td>
-                  <td>Adoption</td>
+                  <td class="cell_dropdown">
+                    <select class="form-control">
+                      <option value="Preboard">Preboard</option>
+                      <option value="Onboard">Onboard</option>
+                      <option value="Adoption">Adoption</option>
+                    </select>
+                  </td>
                   <td>11223</td>
                   <td>Manager</td>
                   <td>Sales</td>
