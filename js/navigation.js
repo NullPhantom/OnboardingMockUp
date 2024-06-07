@@ -112,6 +112,20 @@ $(document).ready(function () {
     }
   });
 
+  $("#preboard-table th").hover(function () {
+    var $this = $(this);
+    if ($this[0].offsetWidth < $this[0].scrollWidth) {
+      $this.attr(
+        "title",
+        $this.text()
+      ); /* Agrega el texto completo como atributo 'title' */
+    } else {
+      $this.removeAttr(
+        "title"
+      ); /* Elimina el atributo 'title' si el texto cabe en la celda */
+    }
+  });
+
   $("#positions-table tbody tr td a.btn").on("click", function () {
     // Acción a realizar al hacer clic en una fila
     $("#main-content > div").addClass("d-none");
@@ -139,144 +153,308 @@ $(document).ready(function () {
     $("#edit-salary-grade").attr("placeholder", salaryGrade);
   });
 
-  $("#tasks-table tbody").on("click", "tr td a.btn", function () {
-    // Acción a realizar al hacer clic en una fila
-    $("#main-content > div").addClass("d-none");
-    $("#edit-tasks-screen").removeClass("d-none");
-    console.log("Haz clic en la fila:", $(this).index());
+  // $("#tasks-table tbody").on("click", "tr td a.btn", function () {
+  //   // Acción a realizar al hacer clic en una fila
+  //   $("#main-content > div").addClass("d-none");
+  //   $("#edit-tasks-screen").removeClass("d-none");
+  //   console.log("Haz clic en la fila:", $(this).index());
 
-    // Obtener la fila correspondiente al botón de edición clicado
-    var row = $(this).closest("tr");
+  //   // Obtener la fila correspondiente al botón de edición clicado
+  //   var row = $(this).closest("tr");
 
-    // Obtener los elementos de la fila
-    var name = row.find("td:eq(0)").text(); // Nombre
-    var description = row.find("td:eq(1)").text(); // Descripción
-    // var stages = row.find("td:eq(2)").text().trim().split(","); // Etapas (como una lista)
-    var hyperlink = row.find("td:eq(2)").text(); // Hyperlink
+  //   // Obtener los elementos de la fila
+  //   var name = row.find("td:eq(0)").text(); // Nombre
+  //   var description = row.find("td:eq(1)").text(); // Descripción
+  //   // var stages = row.find("td:eq(2)").text().trim().split(","); // Etapas (como una lista)
+  //   var hyperlink = row.find("td:eq(2)").text(); // Hyperlink
 
-    // Mostrar la información en la consola (solo para propósitos de demostración)
-    console.log("Nombre:", name);
-    console.log("Descripción:", description);
-    // console.log("Etapas:", stages);
-    console.log("Hyperlink:", hyperlink);
+  //   // Mostrar la información en la consola (solo para propósitos de demostración)
+  //   console.log("Nombre:", name);
+  //   console.log("Descripción:", description);
+  //   // console.log("Etapas:", stages);
+  //   console.log("Hyperlink:", hyperlink);
 
-    // Insertar los valores en los campos de texto como placeholders
-    $("#edit-name-task").attr("placeholder", name);
-    $("#edit-description-task").attr("placeholder", description);
-    $("#edit-hyperlink-task").attr("placeholder", hyperlink);
+  //   // Insertar los valores en los campos de texto como placeholders
+  //   $("#edit-name-task").attr("placeholder", name);
+  //   $("#edit-description-task").attr("placeholder", description);
+  //   $("#edit-hyperlink-task").attr("placeholder", hyperlink);
+  // });
+
+  // const tasksData = {
+  //   Developer: {
+  //     PreBoard: [
+  //       {
+  //         name: "Account",
+  //         description: "Create account",
+  //         hyperlink: "http://example.com/task1",
+  //       },
+  //       {
+  //         name: "Hardware request",
+  //         description: "Make a Hardware Request",
+  //         hyperlink: "http://example.com/task2",
+  //       },
+  //     ],
+  //     Onboard: [
+  //       {
+  //         name: "Cube",
+  //         description:
+  //           "Establish the position in which the employee is to be installed",
+  //         hyperlink: "http://example.com/task1",
+  //       },
+  //       {
+  //         name: "Name Tag",
+  //         description: "Assign the Name Tag",
+  //         hyperlink: "http://example.com/task2",
+  //       },
+  //       {
+  //         name: "Welcome activity",
+  //         description: "Perform the welcome activity",
+  //         hyperlink: "http://example.com/task3",
+  //       },
+  //     ],
+  //     Adoption: [
+  //       {
+  //         name: "Activities Assignation",
+  //         description: "Perform assignment activities",
+  //         hyperlink: "http://example.com/task1",
+  //       },
+  //     ],
+  //   },
+  //   Analyst: {
+  //     PreBoard: [
+  //       {
+  //         name: "Task 5",
+  //         description: "Task 5 Description",
+  //         hyperlink: "http://example.com/task5",
+  //       },
+  //     ],
+  //     Onboard: [],
+  //     Adoption: [],
+  //   },
+  //   Manager: {
+  //     PreBoard: [],
+  //     Onboard: [],
+  //     Adoption: [],
+  //   },
+  // };
+
+  // $("#positions-table tbody").on(
+  //   "click",
+  //   "tr td a.stages-link",
+  //   function (event) {
+  //     event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+
+  //     // Obtener el stage seleccionado (texto del enlace)
+  //     var stage = $(this).text().replace(",", ""); // Remover la coma si está presente
+
+  //     // Obtener la fila correspondiente al enlace clicado
+  //     var row = $(this).closest("tr");
+
+  //     // Obtener los elementos de la fila
+  //     var name = row.find("td:eq(0)").text(); // Nombre
+  //     var description = row.find("td:eq(1)").text(); // Descripción
+  //     var threshold = row.find("td:eq(3)").text(); // Umbral de días de incorporación
+
+  //     // Mostrar la pantalla de tareas del stage seleccionado
+  //     $("#main-content > div").addClass("d-none");
+  //     $("#stages-screen").removeClass("d-none");
+
+  //     // Llenar los elementos de la pantalla de tareas del stage con la información obtenida
+  //     $("#stage-name").text(name);
+  //     $("#stage-description").text(description);
+  //     $("#stage-threshold").text(threshold);
+  //     $("#stage-selected").text(stage);
+
+  //     // Cambiar el contenido del h2 en la pantalla de stages
+  //     document.getElementById("title-stage").innerText = `${name} ${stage}`;
+
+  //     // Limpiar la tabla de tareas
+  //     $("#tasks-table tbody").empty();
+
+  //     // Obtener las tareas correspondientes a la posición y stage seleccionados
+  //     var tasks = tasksData[name] ? tasksData[name][stage] : [];
+
+  //     // Llenar la tabla de tareas con los datos hardcodeados
+  //     tasks.forEach(function (task) {
+  //       var rowHtml = `<tr>
+  //           <td>${task.name}</td>
+  //           <td>${task.description}</td>
+  //           <td><a href="${task.hyperlink}" target="_blank">${task.hyperlink}</a></td>
+  //           <td class="text-center">
+  //             <a href="#" class="btn"><i class="bi bi-pencil"></i></a>
+  //           </td>
+  //       </tr>`;
+  //       $("#tasks-table tbody").append(rowHtml);
+  //     });
+
+  //     console.log("Stage seleccionado:", stage);
+  //     console.log("Nombre:", name);
+  //     console.log("Descripción:", description);
+  //     console.log("Umbral de días de incorporación:", threshold);
+  //   }
+  // );
+
+  let currentCell; // Variable para almacenar la celda actualmente seleccionada
+  let selectedTools = []; // Arreglo para almacenar las herramientas seleccionadas
+
+  $("#positions-table tbody tr td.tools-link").on("click", () => {
+    // Mostrar modal para agregar herramientas
+    $("#autocompleteModal").modal("show");
+    // Almacenar referencia a la celda actual
+    currentCell = this;
   });
 
-  const tasksData = {
-    Developer: {
-      PreBoard: [
-        {
-          name: "Account",
-          description: "Create account",
-          hyperlink: "http://example.com/task1",
-        },
-        {
-          name: "Hardware request",
-          description: "Make a Hardware Request",
-          hyperlink: "http://example.com/task2",
-        },
-      ],
-      Onboard: [
-        {
-          name: "Cube",
-          description:
-            "Establish the position in which the employee is to be installed",
-          hyperlink: "http://example.com/task1",
-        },
-        {
-          name: "Name Tag",
-          description: "Assign the Name Tag",
-          hyperlink: "http://example.com/task2",
-        },
-        {
-          name: "Welcome activity",
-          description: "Perform the welcome activity",
-          hyperlink: "http://example.com/task3",
-        },
-      ],
-      Adoption: [
-        {
-          name: "Activities Assignation",
-          description: "Perform assignment activities",
-          hyperlink: "http://example.com/task1",
-        },
-      ],
-    },
-    Analyst: {
-      PreBoard: [
-        {
-          name: "Task 5",
-          description: "Task 5 Description",
-          hyperlink: "http://example.com/task5",
-        },
-      ],
-      Onboard: [],
-      Adoption: [],
-    },
-    Manager: {
-      PreBoard: [],
-      Onboard: [],
-      Adoption: [],
-    },
-  };
+  function autocomplete(inp, arr) {
+    var currentFocus;
 
-  $("#positions-table tbody").on(
-    "click",
-    "tr td a.stages-link",
-    function (event) {
-      event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+    inp.addEventListener("input", function (e) {
+      var val = this.value;
+      showAutocompleteList(val, arr);
+    });
 
-      // Obtener el stage seleccionado (texto del enlace)
-      var stage = $(this).text().replace(",", ""); // Remover la coma si está presente
+    inp.addEventListener("click", function (e) {
+      var val = this.value;
+      showAutocompleteList(val, arr, true);
+    });
 
-      // Obtener la fila correspondiente al enlace clicado
-      var row = $(this).closest("tr");
+    inp.addEventListener("keydown", function (e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        currentFocus++;
+        addActive(x);
+      } else if (e.keyCode == 38) {
+        currentFocus--;
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        e.preventDefault();
+        if (currentFocus > -1) {
+          if (x) x[currentFocus].click();
+        }
+      }
+    });
 
-      // Obtener los elementos de la fila
-      var name = row.find("td:eq(0)").text(); // Nombre
-      var description = row.find("td:eq(1)").text(); // Descripción
-      var threshold = row.find("td:eq(3)").text(); // Umbral de días de incorporación
+    function showAutocompleteList(val, arr, showAll = false) {
+      var a, b, i;
+      closeAllLists();
+      currentFocus = -1;
+      a = document.createElement("DIV");
+      a.setAttribute("id", inp.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      inp.parentNode.appendChild(a);
 
-      // Mostrar la pantalla de tareas del stage seleccionado
-      $("#main-content > div").addClass("d-none");
-      $("#stages-screen").removeClass("d-none");
-
-      // Llenar los elementos de la pantalla de tareas del stage con la información obtenida
-      $("#stage-name").text(name);
-      $("#stage-description").text(description);
-      $("#stage-threshold").text(threshold);
-      $("#stage-selected").text(stage);
-
-      // Cambiar el contenido del h2 en la pantalla de stages
-      document.getElementById("title-stage").innerText = `${name} ${stage}`;
-
-      // Limpiar la tabla de tareas
-      $("#tasks-table tbody").empty();
-
-      // Obtener las tareas correspondientes a la posición y stage seleccionados
-      var tasks = tasksData[name] ? tasksData[name][stage] : [];
-
-      // Llenar la tabla de tareas con los datos hardcodeados
-      tasks.forEach(function (task) {
-        var rowHtml = `<tr>
-            <td>${task.name}</td>
-            <td>${task.description}</td>
-            <td><a href="${task.hyperlink}" target="_blank">${task.hyperlink}</a></td>
-            <td class="text-center">
-              <a href="#" class="btn"><i class="bi bi-pencil"></i></a>
-            </td>
-        </tr>`;
-        $("#tasks-table tbody").append(rowHtml);
-      });
-
-      console.log("Stage seleccionado:", stage);
-      console.log("Nombre:", name);
-      console.log("Descripción:", description);
-      console.log("Umbral de días de incorporación:", threshold);
+      var count = 0;
+      for (i = 0; i < arr.length; i++) {
+        if (
+          showAll ||
+          arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()
+        ) {
+          if (count < 5) {
+            b = document.createElement("DIV");
+            b.innerHTML =
+              "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            b.addEventListener("click", function (e) {
+              inp.value = this.getElementsByTagName("input")[0].value;
+              closeAllLists();
+            });
+            a.appendChild(b);
+            count++;
+          }
+        }
+      }
     }
-  );
+
+    function addActive(x) {
+      if (!x) return false;
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = x.length - 1;
+      x[currentFocus].classList.add("autocomplete-active");
+    }
+
+    function removeActive(x) {
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active");
+      }
+    }
+
+    function closeAllLists(elmnt) {
+      var x = document.getElementsByClassName("autocomplete-items");
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
+        }
+      }
+    }
+
+    document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+    });
+  }
+
+  var tools = [
+    "Request Hardware",
+    "Jira access",
+    "Sharepoint",
+    "Peer programming",
+    "Activities assignment",
+    "Career path",
+    "Account",
+    "Cube assignment",
+    "Welcome letter",
+  ];
+
+  autocomplete(document.getElementById("autocomplete-tool"), tools);
+
+  document
+    .getElementById("addToolButton")
+    .addEventListener("click", function () {
+      var toolInput = document.getElementById("autocomplete-tool");
+      var tool = toolInput.value;
+      if (tool) {
+        addToolToList(tool);
+        toolInput.value = "";
+      }
+    });
+
+  document
+    .getElementById("acceptButton")
+    .addEventListener("click", function () {
+      $("#autocompleteModal").modal("hide");
+    });
+
+  function addToolToList(tool) {
+    var toolList = document.getElementById("toolList");
+    var listItem = document.createElement("li");
+    listItem.classList.add(
+      "list-group-item",
+      "d-flex",
+      "justify-content-between",
+      "align-items-center"
+    );
+    listItem.innerHTML = `<span>${tool}</span><button class="remove-btn" style="background: none; border: none;"><i class="bi bi-x-circle"></i></button>`;
+
+    var toolExists = Array.from(toolList.children).some(
+      (item) => item.textContent.trim() === tool.trim()
+    );
+    if (!toolExists) {
+      toolList.appendChild(listItem);
+
+      listItem
+        .querySelector(".remove-btn")
+        .addEventListener("click", function () {
+          toolList.removeChild(listItem);
+        });
+    } else {
+      alert("¡La herramienta ya está en la lista!");
+    }
+  }
+
+  // document
+  //   .getElementById("openDialogButton")
+  //   .addEventListener("click", function () {
+
+  //   });
 });
