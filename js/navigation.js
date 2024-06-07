@@ -294,6 +294,116 @@ $(document).ready(function () {
   //   }
   // );
 
+  //AUTOCOMPLETE AND SEARCHABLE DROPDOWN SECTION
+
+  function autocompleteDropDown(inp, arr) {
+    var currentFocus;
+
+    inp.addEventListener("input", function (e) {
+      var val = this.value;
+      showAutocompleteList(val, arr);
+    });
+
+    inp.addEventListener("click", function (e) {
+      showAutocompleteList("", arr, true);
+    });
+
+    inp.addEventListener("keydown", function (e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        currentFocus++;
+        addActive(x);
+      } else if (e.keyCode == 38) {
+        currentFocus--;
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        e.preventDefault();
+        if (currentFocus > -1) {
+          if (x) x[currentFocus].click();
+        }
+      }
+    });
+
+    function showAutocompleteList(val, arr, showAll = false) {
+      var a, b, i;
+      closeAllLists();
+      currentFocus = -1;
+      a = document.createElement("DIV");
+      a.setAttribute("id", inp.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      inp.parentNode.appendChild(a);
+
+      var count = 0;
+      for (i = 0; i < arr.length; i++) {
+        if (
+          showAll ||
+          arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()
+        ) {
+          if (count < 5) {
+            b = document.createElement("DIV");
+            b.innerHTML =
+              "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            b.addEventListener("click", function (e) {
+              inp.value = this.getElementsByTagName("input")[0].value;
+              closeAllLists();
+            });
+            a.appendChild(b);
+            count++;
+          }
+        }
+      }
+    }
+
+    function addActive(x) {
+      if (!x) return false;
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = x.length - 1;
+      x[currentFocus].classList.add("autocomplete-active");
+    }
+
+    function removeActive(x) {
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active");
+      }
+    }
+
+    function closeAllLists(elmnt) {
+      var x = document.getElementsByClassName("autocomplete-items");
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
+        }
+      }
+    }
+
+    document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+    });
+  }
+
+  var tools = [
+    "Request Hardware",
+    "Jira access",
+    "Sharepoint",
+    "Peer programming",
+    "Activities assignment",
+    "Career path",
+    "Account",
+    "Cube assignment",
+    "Welcome letter",
+  ];
+
+  autocompleteDropDown(
+    document.getElementById("autocomplete-tool-dropdown"),
+    tools
+  );
+
+  // MODAL SECTION
+
   let currentCell; // Variable para almacenar la celda actualmente seleccionada
   let selectedTools = []; // Arreglo para almacenar las herramientas seleccionadas
 
@@ -451,10 +561,4 @@ $(document).ready(function () {
       alert("¡La herramienta ya está en la lista!");
     }
   }
-
-  // document
-  //   .getElementById("openDialogButton")
-  //   .addEventListener("click", function () {
-
-  //   });
 });
