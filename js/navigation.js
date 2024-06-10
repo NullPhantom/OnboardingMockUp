@@ -73,8 +73,9 @@ $(document).ready(function () {
     var costCenter = row.find("td:eq(8)").text(); //Cost center
     var startingDate = row.find("td:eq(9)").text(); //Starting Date
     var manager = row.find("td:eq(10)").text(); //Manager
-    var supervisor = row.find("td:eq(11)").text(); //Notes
-    var notes = row.find("td:eq(12)").text();
+    var supervisor = row.find("td:eq(11)").text(); //Supervisor
+    var assignee = row.find("td:eq(12)").text(); //Assignee
+    var notes = row.find("td:eq(13)").text(); // Notes
 
     console.log("Name of the employee: ", name);
     console.log("Type: ", type);
@@ -88,6 +89,7 @@ $(document).ready(function () {
     console.log("Starting date: ", startingDate);
     console.log("Manager: ", manager);
     console.log("Supervisor: ", supervisor);
+    console.log("Assignee: ", assignee);
     console.log("Notes: ", notes);
 
     // Acción a realizar al hacer clic en una fila
@@ -96,6 +98,43 @@ $(document).ready(function () {
     console.log("Haz clic en la fila:", $(this).index());
 
     $("#employee-name").text(name);
+
+    $("#type-employee").html(
+      "<small><strong>Type:</strong> " + type + "</small>"
+    );
+    $("#ignition-employee").html(
+      "<small><strong>IgnitionID:</strong> " + ignitionID + "</small>"
+    );
+    $("#position-employee").html(
+      "<small><strong>Position:</strong> " + position + "</small>"
+    );
+    $("#area-employee").html(
+      "<small><strong>Area:</strong> " + area + "</small>"
+    );
+    $("#email-employee").html(
+      "<small><strong>Email:</strong> " + email + "</small>"
+    );
+    $("#enddate-employee").html(
+      "<small><strong>End date:</strong> " + onboardEndDate + "</small>"
+    );
+    $("#costcenter-employee").html(
+      "<small><strong>Cost center:</strong> " + costCenter + "</small>"
+    );
+    $("#startingdate-employee").html(
+      "<small><strong>Starting date:</strong> " + startingDate + "</small>"
+    );
+    $("#manager-employee").html(
+      "<small><strong>Manager:</strong> " + manager + "</small>"
+    );
+    $("#supervisor-employee").html(
+      "<small><strong>Supervisor:</strong> " + supervisor + "</small>"
+    );
+    $("#assignee-employee").html(
+      "<small><strong>Assignee:</strong> " + assignee + "</small>"
+    );
+    $("#notes-employee").html(
+      "<small><strong>Notes:</strong> " + notes + "</small>"
+    );
   });
 
   $("#preboard-table td").hover(function () {
@@ -294,120 +333,12 @@ $(document).ready(function () {
   //   }
   // );
 
-  //AUTOCOMPLETE AND SEARCHABLE DROPDOWN SECTION
-
-  function autocompleteDropDown(inp, arr) {
-    var currentFocus;
-
-    inp.addEventListener("input", function (e) {
-      var val = this.value;
-      showAutocompleteList(val, arr);
-    });
-
-    inp.addEventListener("click", function (e) {
-      showAutocompleteList("", arr, true);
-    });
-
-    inp.addEventListener("keydown", function (e) {
-      var x = document.getElementById(this.id + "autocomplete-list");
-      if (x) x = x.getElementsByTagName("div");
-      if (e.keyCode == 40) {
-        currentFocus++;
-        addActive(x);
-      } else if (e.keyCode == 38) {
-        currentFocus--;
-        addActive(x);
-      } else if (e.keyCode == 13) {
-        e.preventDefault();
-        if (currentFocus > -1) {
-          if (x) x[currentFocus].click();
-        }
-      }
-    });
-
-    function showAutocompleteList(val, arr, showAll = false) {
-      var a, b, i;
-      closeAllLists();
-      currentFocus = -1;
-      a = document.createElement("DIV");
-      a.setAttribute("id", inp.id + "autocomplete-list");
-      a.setAttribute("class", "autocomplete-items");
-      inp.parentNode.appendChild(a);
-
-      var count = 0;
-      for (i = 0; i < arr.length; i++) {
-        if (
-          showAll ||
-          arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()
-        ) {
-          if (count < 5) {
-            b = document.createElement("DIV");
-            b.innerHTML =
-              "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-            b.innerHTML += arr[i].substr(val.length);
-            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-            b.addEventListener("click", function (e) {
-              inp.value = this.getElementsByTagName("input")[0].value;
-              closeAllLists();
-            });
-            a.appendChild(b);
-            count++;
-          }
-        }
-      }
-    }
-
-    function addActive(x) {
-      if (!x) return false;
-      removeActive(x);
-      if (currentFocus >= x.length) currentFocus = 0;
-      if (currentFocus < 0) currentFocus = x.length - 1;
-      x[currentFocus].classList.add("autocomplete-active");
-    }
-
-    function removeActive(x) {
-      for (var i = 0; i < x.length; i++) {
-        x[i].classList.remove("autocomplete-active");
-      }
-    }
-
-    function closeAllLists(elmnt) {
-      var x = document.getElementsByClassName("autocomplete-items");
-      for (var i = 0; i < x.length; i++) {
-        if (elmnt != x[i] && elmnt != inp) {
-          x[i].parentNode.removeChild(x[i]);
-        }
-      }
-    }
-
-    document.addEventListener("click", function (e) {
-      closeAllLists(e.target);
-    });
-  }
-
-  var tools = [
-    "Request Hardware",
-    "Jira access",
-    "Sharepoint",
-    "Peer programming",
-    "Activities assignment",
-    "Career path",
-    "Account",
-    "Cube assignment",
-    "Welcome letter",
-  ];
-
-  autocompleteDropDown(
-    document.getElementById("autocomplete-tool-dropdown"),
-    tools
-  );
-
-  // MODAL SECTION
+  // AUTOCOMPLETE INPUT SECTION
 
   let currentCell; // Variable para almacenar la celda actualmente seleccionada
   let selectedTools = []; // Arreglo para almacenar las herramientas seleccionadas
 
-  $("#positions-table tbody tr td.tools-link").on("click", () => {
+  $("#positions-table tbody tr td.tools-link").on("click", function () {
     // Mostrar modal para agregar herramientas
     $("#autocompleteModal").modal("show");
     // Almacenar referencia a la celda actual
@@ -423,6 +354,7 @@ $(document).ready(function () {
     });
 
     inp.addEventListener("click", function (e) {
+      console.log("click funcion modal");
       var val = this.value;
       showAutocompleteList(val, arr, true);
     });
@@ -516,12 +448,13 @@ $(document).ready(function () {
     "Welcome letter",
   ];
 
-  autocomplete(document.getElementById("autocomplete-tool"), tools);
+  autocomplete(document.getElementById("autocomplete-tool-dropdown"), tools);
+  autocomplete(document.getElementById("autocomplete-tool-screen"), tools);
 
   document
     .getElementById("addToolButton")
     .addEventListener("click", function () {
-      var toolInput = document.getElementById("autocomplete-tool");
+      var toolInput = document.getElementById("autocomplete-tool-dropdown");
       var tool = toolInput.value;
       if (tool) {
         addToolToList(tool);
@@ -532,6 +465,17 @@ $(document).ready(function () {
   document
     .getElementById("acceptButton")
     .addEventListener("click", function () {
+      let toolListItems = document.querySelectorAll(
+        "#toolList .list-group-item span"
+      );
+      let toolNames = Array.from(toolListItems).map((item) => item.textContent);
+      if (currentCell) {
+        let displayTools = toolNames.slice(0, 3); // Tomar solo las primeras 3 herramientas
+        if (toolNames.length > 3) {
+          displayTools.push("..."); // Agregar puntos suspensivos si hay más de 3 herramientas
+        }
+        currentCell.innerHTML = displayTools.join(", ");
+      }
       $("#autocompleteModal").modal("hide");
     });
 
